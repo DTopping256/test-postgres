@@ -1,4 +1,4 @@
-# Development environment Postgres database + Drizzle
+# Postgres database + Drizzle
 
 > **Disclaimer: This is not intended as a guide for a production setup, this was an experiment for local development only.**
 
@@ -16,7 +16,10 @@ Made a simple relational database for modelling games of Snooker as the domain.
 - Create a file `.env` and set a password for Postgres to use:
 
   ```env
-  POSTGRES_PASSWORD=<PASSWORD>
+  POSTGRES_HOST=127.0.0.1
+  POSTGRES_DATABASE_NAME=postgres
+  POSTGRES_USER=postgres
+  POSTGRES_PASSWORD=<password>
   ```
 
 - Start the database locally
@@ -34,16 +37,29 @@ The database will save to a Docker volume, so will persist changes to the databa
 
 ### Configuring the database
 
+#### Option 1. Manually running SQL scripts
+
+In the `database/manual/` directory, are SQL scripts which setup the database and seed it.
+
 - Tables can be added by executing each table sql script in this order: `player.sql`, `game.sql`, `game_player_break.sql`.
 - Data can be seeded into these tables using the `seed_data.sql` script.
+
+#### Option 2. Using Drizzle
+
+- Applying drizzle migrations: `pnpm db:generate` followed by `pnpm db:migrate`
+- Seeding the database: `pnpm db:seed`
 
 ### Example queries
 
 Example queries for the seed data on the table structures are here:
-[/database/example_queries.sql](./database/example_queries.sql)
+[/database/manual/example_queries.sql](./database/manual/example_queries.sql)
+
+Or can be ran in CLI using Drizzle with `pnpm db:query-highest-break` or `pnpm db:query-game-score` CLI commands.
 
 ## References
 
 - https://docs.docker.com/desktop/
 - https://hub.docker.com/_/postgres
 - https://www.postgresql.org/docs/current/
+- https://orm.drizzle.team/docs/get-started/postgresql-new
+- https://orm.drizzle.team/docs/kit-overview

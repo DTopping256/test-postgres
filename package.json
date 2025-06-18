@@ -1,0 +1,24 @@
+{
+  "name": "test-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "dotenvx run -- drizzle-kit migrate",
+    "db:seed": "dotenvx run -- tsx database/src/seed-data.ts",
+    "db:query-highest-break": "dotenvx run -- tsx database/src/query-highest-break.ts",
+    "db:query-game-score": "dotenvx run -- tsx database/src/query-game-score.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@dotenvx/dotenvx": "1.44.2",
+    "drizzle-kit": "0.31.1",
+    "tsx": "4.20.3"
+  },
+  "workspaces": [
+    "database"
+  ]
+}
