@@ -1,0 +1,17 @@
+{
+  "name": "test-postgres",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "db:get-string": "dotenvx run -- tsx scripts/get-db-string.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@dotenvx/dotenvx": "1.44.2",
+    "@types/node": "^24.0.10",
+    "tsx": "4.20.3"
+  }
+}
